@@ -1,2 +1,7 @@
 page:
   per_page_6: 6
+length:
+  digit_8: 8
+  digit_10: 10
+  digit_255: 255
+  digit_16: 16

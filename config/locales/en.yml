@@ -11,12 +11,19 @@ en:
       vie: "Vietnamese"
       en: "English"
   footer: "bucbuc Inc. All rights Resevered."
+  welcome: "Welcome to BucBuc"
   log_in: "Login"
+  sign_up: "Sign Up"
+  forgot_password: "Forgot Password"
   remember_me: "Remember Me"
   the_form_contains: "The Form Contains"
   users:
+    already_account: "Already account ?"
+    not_found: "Not found this user"
     login:
       invalid_login: "Wrong Email or Password. Please try again !"
+    register:
+      invalid_reg: "Register Fail. Please try again !"
   shared:
     error:
       zero: "No Error"

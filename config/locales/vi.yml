@@ -2,8 +2,13 @@ vi:
   hello: "Hello world"
   title: "BucBucBuc"
   log_in: "Dang nhap"
+  sign_up: "Sign Up"
+  forgot_password: "Quen mat khau"
   remember_me: "Luu thong tin"
   the_form_contains: "Contain Form"
   users:
+    already_account: "Da co account ?"
     login:
       invalid_login: "Sai email hoac mat khau. Vui long thu lai !"
+    register:
+      invalid_reg: "Dang ky khong thanh cong. Vui long thu lai!"
