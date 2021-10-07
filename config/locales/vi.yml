@@ -42,6 +42,7 @@ vi:
     no_book: "Chung toi chua co sach nay"
     all_books: "Tat ca sach chung toi co"
     see_more: "Xem them"
+    back_manage: "Tro lai"
     search: "Tim kiem"
     not_found: "Khong tim thay sach"
     price: "Gia: "
