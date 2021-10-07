@@ -1,0 +1,24 @@
+<% provide :title, @book.title %>
+<div class="row book-detail-sale justify-content-center">
+  <div class="ps-book__image">
+    <%= image_tag("bucbuc_logo.png", alt: "book") %>
+  </div>
+  <%= form_with model: book, url: user_shop_book_path(user_id: current_user.id, id: @book.id), method: :put, local: true do |f| %>
+    <div class="ps-book__info">
+      <h3> Book's Name :</h3>
+      <%= f.text_field :title, class: "form-control" %>
+      <h3> Category :</h3>
+      <%= f.collection_select :category_id, @categories, :id, :title, { include_blank: false }, {class: "form-control"} %>
+      <h3> Price :</h3>
+      <%= f.number_field :price, class: "form-control" %>
+      <h3><%= t "books.detail.description" %></h3>
+      <%= f.text_area :description, size: "70x5", class: "form-control" %>
+      <div class="ps-book__shopping">
+        <%= f.submit t("books.update"), class: "btn btn-primary col-md-5" %>
+        <%= link_to t("books.back_manage"),
+          user_shop_books_path(user_id: current_user.id), class: "btn btn-secondary m-3 col-md-5" %>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>

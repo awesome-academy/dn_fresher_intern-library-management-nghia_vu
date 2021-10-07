@@ -29,7 +29,7 @@
                 <td class="text-center align-middle "><%= number_to_currency(book.price,locale: :vi) %></td>
                 <td>
                   <%= link_to t("shared.details"), user_shop_book_path(user_id: current_user.id, id: book.id), class: "btn btn-outline-primary btn-order" %>
-                  <%= link_to t("shared.edit"), "#", class: "btn btn-outline-warning btn-order m-2" %>
+                  <%= link_to t("shared.edit"), edit_user_shop_book_path(user_id: current_user.id, id: book.id), class: "btn btn-outline-warning btn-order m-2" %>
                   <%= link_to t("shared.delete"), "#", class: "btn btn-outline-danger btn-order" %>
                 </td>
               </tr>
