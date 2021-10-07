@@ -1,11 +1,14 @@
 class Shop::BooksController < ApplicationController
-  before_action :load_shop, only: :index
   before_action :check_file, only: :import
+  before_action :load_shop, only: %i(index show)
+  before_action :load_book, only: :show
 
   def index
     @books = @shop.all_books
                   .page(params[:page]).per(Settings.length.digit_8)
   end
+
+  def show; end
 
   def import
     Book.import(@file, current_user.shop.id)
@@ -33,5 +36,13 @@ class Shop::BooksController < ApplicationController
 
     flash[:danger] = t("shops.not_found")
     redirect_to root_url
+  end
+
+  def load_book
+    @book = @shop.books.find_by id: params[:id]
+    return if @book
+
+    flash[:danger] = t "books.not_found"
+    redirect_to static_pages_home_path
   end
 end
