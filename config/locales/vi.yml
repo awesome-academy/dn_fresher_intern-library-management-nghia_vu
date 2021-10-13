@@ -86,6 +86,7 @@ vi:
         user:
           attributes:
             name:
+              blank: "khong duoc de trong"
               too_short: "phai co it nhat 10 ky tu"
             email:
               too_long: "dai toi da 255 ky tu"

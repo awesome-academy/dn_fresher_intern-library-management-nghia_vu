@@ -99,6 +99,7 @@ en:
         user:
           attributes:
             name:
+              blank: "is require"
               too_short: "is Minimum character is 10"
             email:
               too_long: "is maximum character is 255"
@@ -106,6 +107,8 @@ en:
               taken: "is used"
               invalid: "is invalid. Must be ex: zxc@zxc.com"
               password: "is minimum character is 8"
+            password:
+              too_short: "is Minimum character is 10"
         shop:
           attributes:
             name:

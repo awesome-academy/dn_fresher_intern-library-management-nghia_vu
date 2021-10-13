@@ -21,14 +21,20 @@ gem "puma", "~> 5.0"
 gem "rails", "~> 6.1.4", ">= 6.1.4.1"
 gem "rails-i18n"
 gem "sass-rails", ">= 6"
-gem "simplecov-rcov"
-gem "simplecov"
 gem "turbolinks", "~> 5"
 gem "webpacker", "~> 5.0"
 
 group :development, :test do
   gem "byebug", platforms: %i(mri mingw x64_mingw)
-  gem "rspec-rails", "~> 4.0.1"
+  gem "rubocop", "~> 0.74.0", require: false
+  gem "rubocop-checkstyle_formatter", require: false
+  gem "rubocop-rails", "~> 2.3.2", require: false
+  gem "database_cleaner", "~> 1.7"
+  gem "factory_bot_rails"
+  gem "rails-controller-testing"
+  gem "rspec-rails", git: "https://github.com/rspec/rspec-rails",
+    branch: "4-0-maintenance"
+  gem "shoulda-matchers"
 end
 
 group :development do
@@ -40,11 +46,10 @@ end
 
 group :test do
   gem "capybara", ">= 3.26"
-  gem "rubocop", "~> 0.74.0", require: false
-  gem "rubocop-checkstyle_formatter", require: false
-  gem "rubocop-rails", "~> 2.3.2", require: false
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem "simplecov-rcov"
+  gem "simplecov"
 end
 
 gem "tzinfo-data", platforms: %i(mingw mswin x64_mingw jruby)
