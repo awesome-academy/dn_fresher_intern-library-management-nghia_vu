@@ -33,7 +33,6 @@ RSpec.describe ShopsController, type: :controller do
             password: "123123123",
             password_confirmation: "123123123")
         log_in @user
-<<<<<<< HEAD
         get :new, params: {user_id: 0}
       end
 
@@ -43,14 +42,6 @@ RSpec.describe ShopsController, type: :controller do
 
       it "show flash message" do
         expect(flash[:danger]).to eq I18n.t("shared.invalid_permision")
-=======
-      end
-
-      it "redirect to root url and flash" do
-        get :new, params: {user_id: 0}
-        expect(flash[:danger]).to eq I18n.t("shared.invalid_permision")
-        expect(response).to redirect_to root_url
->>>>>>> rspec controller
       end
     end 
   end
@@ -66,18 +57,12 @@ RSpec.describe ShopsController, type: :controller do
         post :create, params: {user_id: @user.id, shop:{name: "asdasdasd", description:"zxczxczxc"}}
       end
       
-<<<<<<< HEAD
       it "redirect to user shop shops path" do
         expect(response).to redirect_to user_shop_shops_path(current_user.id)
       end
 
       it "show flash message" do
         expect(flash[:success]).to eq I18n.t("shops.success")
-=======
-      it "redirect to user shop shops path and flash" do
-        expect(flash[:success]).to eq I18n.t("shops.success")
-        expect(response).to redirect_to user_shop_shops_path(current_user.id)
->>>>>>> rspec controller
       end
     end
 
@@ -92,18 +77,12 @@ RSpec.describe ShopsController, type: :controller do
         post :create, params: {user_id: @user.id, shop:{name: "", description:"zxczxczxc"}}
       end
       
-<<<<<<< HEAD
       it "render the new template" do
         expect(response).to render_template :new
       end
 
       it "show flash message" do
         expect(flash[:danger]).to eq I18n.t("shops.fail")
-=======
-      it "render the new template and flash" do
-        expect(flash[:danger]).to eq I18n.t("shops.fail")
-        expect(response).to render_template :new
->>>>>>> rspec controller
       end
     end
   end
