@@ -12,7 +12,13 @@
     <%= render "layouts/header" %>
     <div class="container flash-noti">
       <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %></div>
+        <% if message_type == "notice" %>
+          <div class="alert alert-success"><%= message %></div>
+        <% elsif message_type == "alert" %>
+          <div class="alert alert-danger"><%= message %></div>
+        <% else %>
+          <div class="alert alert-<%= message_type %>"><%= message %></div>
+        <% end %>
       <% end %>
     </div>
     <div id="alert_add_cart"></div>

@@ -1,0 +1,41 @@
+<% provide :title, t("sign_up") %>
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name),
+        html: {class: "login100-form validate-form"}) do |f| %>
+        <span class="login100-form-title p-b-43">
+          <%= t "sign_up" %>
+        </span>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="wrap-input100">
+          <%= f.text_field :name, autocomplete: "name", class: "input100", placeholder: t("users.register.name")%>
+          <span class="focus-input100"></span>
+        </div>
+        <div class="wrap-input100 validate-input" data-validate =<%= t("users.register.email_req")%>>
+          <%= f.email_field :email, autocomplete: "email",
+            class: "input100", placeholder: t("users.register.email")%>
+          <span class="focus-input100"></span>
+        </div>
+        <div class="wrap-input100 validate-input" data-validate=<%= t("users.register.password_req")%>>
+          <%= f.password_field :password, class: "input100", placeholder: t("users.register.password")%>
+          <span class="focus-input100"></span>
+        </div>
+        <div class="wrap-input100 validate-input" data-validate=<%= t("users.register.password_req")%>>
+          <%= f.password_field :password_confirmation, class: "input100", placeholder: t("users.register.password_repeat")%>
+          <span class="focus-input100"></span>
+        </div>
+        <div class="container-login100-form-btn">
+          <%= f.submit t("sign_up"), class: "login100-form-btn" %>
+        </div>
+        <div class="text-center p-t-46 p-b-20">
+          <span class="txt2">
+            <%= t "users.already_account" %>
+            <%= render "devise/shared/links" %>
+          </span>
+        </div>
+      <% end %>
+      <div class="login100-more"></div>
+    </div>
+  </div>
+</div>

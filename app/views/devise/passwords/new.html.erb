@@ -1,0 +1,28 @@
+<% provide :title, t("forgot_password") %>
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name),
+        html: {class: "login100-form validate-form"}) do |f| %>
+        <span class="login100-form-title p-b-43">
+          <%= t "forgot_password" %>
+        </span>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="wrap-input100 validate-input" data-validate =<%= t("users.register.email_req")%>>
+          <%= f.email_field :email, autocomplete: "email",
+            class: "input100", placeholder: t("users.register.email")%>
+          <span class="focus-input100"></span>
+        </div>
+        <div class="container-login100-form-btn">
+          <%= f.submit t("send_email_reset_pass"), class: "login100-form-btn" %>
+        </div>
+        <div class="text-center p-t-46 p-b-20">
+          <span class="txt2">
+            <%= render "devise/shared/links" %>
+          </span>
+        </div>
+      <% end %>
+      <div class="login100-more"></div>
+    </div>
+  </div>
+</div>

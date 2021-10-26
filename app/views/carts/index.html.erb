@@ -40,7 +40,7 @@
       </div>
     </div>
     <div class="row">
-      <% if logged_in? %>
+      <% if current_user.present? %>
         <%= link_to t("cart.pay"), new_user_order_path(current_user),
           class: "btn btn-primary btn-pay" %>
       <% else %>

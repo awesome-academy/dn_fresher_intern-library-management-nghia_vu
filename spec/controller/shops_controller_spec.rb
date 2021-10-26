@@ -9,7 +9,7 @@ RSpec.describe ShopsController, type: :controller do
   describe "GET #new" do
     context "when user_id valid" do
       before do
-        log_in user
+        sign_in user
         get :new, params: {user_id: user.id}
       end
   
@@ -28,7 +28,7 @@ RSpec.describe ShopsController, type: :controller do
 
     context "when user_id invalid" do
       before do
-        log_in user
+        sign_in user
         get :new, params: {user_id: 0}
       end
 
@@ -45,12 +45,12 @@ RSpec.describe ShopsController, type: :controller do
   describe "POST #create" do
     context "when valid attributes" do
       before do
-        log_in user
+        sign_in user
         post :create, params: {user_id: user.id, shop:{name: "asdasdasd", description:"zxczxczxc"}}
       end
       
       it "redirect to user shop shops path" do
-        expect(response).to redirect_to user_shop_shops_path(current_user.id)
+        expect(response).to redirect_to user_shop_shops_path(user.id)
       end
 
       it "show flash message" do
@@ -61,7 +61,7 @@ RSpec.describe ShopsController, type: :controller do
     context "when invalid attributes" do
       let!(:shop) {FactoryBot.create :book}
       before do
-        log_in user
+        sign_in user
         post :create, params: {user_id: user.id, shop:{name: "", description:"zxczxczxc"}}
       end
       
