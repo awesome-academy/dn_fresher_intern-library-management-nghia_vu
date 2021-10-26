@@ -17,6 +17,8 @@ en:
   log_in: "Login"
   sign_up: "Sign Up"
   forgot_password: "Forgot Password"
+  send_email_reset_pass: "Send reset password instructions"
+  change_pass: "Change your password"
   remember_me: "Remember Me"
   the_form_contains: "The Form Contains"
   users:
@@ -32,6 +34,10 @@ en:
       password_repeat: "Password Repeat"
       password_req: "Password is required"
       invalid_reg: "Register Fail. Please try again !"
+    edit: "Edit"
+    cancel_acc: "Cancel my accounts"
+    unhappy: "Unhappy?"
+    back: "Back"
   shops:
     shops: "Shops"
     all_shops: "All Shops"

@@ -1,5 +1,5 @@
 class Shop::OrdersController < ApplicationController
-  before_action :logged_in_user
+  before_action :authenticate_user!
   before_action :load_shop, only: %i(index show approve disclaim)
   before_action :load_order, only: %i(show approve disclaim)
   before_action :check_quantity, only: :approve

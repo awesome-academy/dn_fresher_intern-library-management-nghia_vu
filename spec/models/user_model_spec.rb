@@ -53,40 +53,5 @@ RSpec.describe User, type: :model do
         expect(order.user.all_orders).to eq [order]
       end
     end
-
-    context ".new_token" do
-      it "return string" do
-        expect(User.new_token).to be_an(String)
-      end
-    end
-
-    context "#remember" do
-      it "update remember digest" do
-        user.remember
-        expect(user.remember_digest).to be_truthy
-      end
-    end
-
-    context "#authenticated?" do
-      it "return false when digest nil" do
-        expect(
-          user.authenticated? :remember, "123123123"
-        ).to eq false
-      end
-
-      it "return true when digest presence" do
-        user.remember
-        expect(
-          user.authenticated? :remember, user.remember_token
-        ).to eq true
-      end
-    end
-
-    context "#forget" do
-      it "update remember to nil" do
-        user.forget
-        expect(user.remember_digest).to be_nil
-      end
-    end
   end
 end

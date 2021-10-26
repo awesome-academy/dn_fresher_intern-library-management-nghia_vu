@@ -2,17 +2,20 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /en|vi/ do
     root "static_pages#home"
     get "static_pages/home"
-    get "/login", to: "sessions#new"
-    post "/login", to: "sessions#create"
-    get "/logout", to: "sessions#destroy"
+    devise_for :users
+    as :user do
+      get "/login", to: "devise/sessions#new"
+      post "/login", to: "devise/sessions#create"
+      delete "/logout", to: "devise/sessions#destroy"
+      get "/signup", to: "devise/registrations#new"
+      post "/signup", to: "devise/registrations#create"
+    end
     resources :books, only: :show
-    get "/signup", to: "users#new"
-    post "/signup", to: "users#create"
     resources :carts, only: %i(index create destroy) do
       get :reset, on: :collection
     end
     resources :shops, only: %i(show index)
-    resources :users, only: %i(new show create) do
+    resources :users, only: %i(show) do
       resources :shops, only: %i(new create)
       namespace :shop do
         resources :orders, only: %i(index show) do
@@ -29,6 +32,6 @@ Rails.application.routes.draw do
       resources :orders, only: %i(new create index show) do
         put :cancel, on: :member
       end
-    end 
+    end
   end
 end

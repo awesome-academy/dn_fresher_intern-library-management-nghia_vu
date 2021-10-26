@@ -10,7 +10,7 @@ RSpec.describe OrdersController, type: :controller do
   describe "GET #new" do
     context "when cart has item" do
       before do
-        log_in user
+        sign_in user
         session[:cart] = {}
         current_cart["1"] = 1
         get :new, params: {user_id: user.id}
@@ -27,7 +27,7 @@ RSpec.describe OrdersController, type: :controller do
 
     context "when cart empty" do
       before do
-        log_in user
+        sign_in user
         session[:cart] = {}
         get :new, params: {user_id: user.id}
       end
@@ -46,7 +46,7 @@ RSpec.describe OrdersController, type: :controller do
     context "when delivery information valid" do
       let!(:book) {FactoryBot.create :book}
       before do
-        log_in user
+        sign_in user
         session[:cart] = {}
         current_cart[book.id.to_s] = 1
         post :create, params: {user_id: user.id, name: "nghia", address: "123 DN", phone: "0123123123"}
@@ -64,14 +64,14 @@ RSpec.describe OrdersController, type: :controller do
     context "when delivery information invalid" do
       let!(:book) {FactoryBot.create :book}
       before do
-        log_in user
+        sign_in user
         session[:cart] = {}
         current_cart[book.id.to_s] = 1
         post :create, params: {user_id: user.id, name: "nghia"}
       end
       
       it "redirect to new user order path" do
-        expect(response).to redirect_to new_user_order_path(current_user)
+        expect(response).to redirect_to new_user_order_path(user)
       end
 
       it "show flash message" do
@@ -86,8 +86,8 @@ RSpec.describe OrdersController, type: :controller do
     include_examples "login examples"
     
     before do
-      log_in order.user
-      @orders = current_user.all_orders
+      sign_in order.user
+      @orders = order.user.all_orders
       get :index, params: {user_id: order.user.id}
     end
       
@@ -105,7 +105,7 @@ RSpec.describe OrdersController, type: :controller do
       let!(:book) {FactoryBot.create :book}
       let!(:order) {FactoryBot.create :order}
       before do
-        log_in order.user
+        sign_in order.user
         order.order_details.create!(quantily: 10,
           price: 10000,
           book_id: book.id) 
@@ -130,7 +130,7 @@ RSpec.describe OrdersController, type: :controller do
     context "when order does not exist" do
       let!(:order) {FactoryBot.create :order}
       before do
-        log_in order.user
+        sign_in order.user
         get :show, params: {user_id: order.user.id, id: 0 }
       end
       
@@ -148,7 +148,7 @@ RSpec.describe OrdersController, type: :controller do
     context "when order pending" do
       let!(:order) {FactoryBot.create :order}
       before do
-        log_in order.user
+        sign_in order.user
         put :cancel, params: {user_id: order.user.id, id: order.id }
       end
       
@@ -164,7 +164,7 @@ RSpec.describe OrdersController, type: :controller do
     context "when order is not pending" do
       let!(:order) {FactoryBot.create :order}
       before do
-        log_in order.user
+        sign_in order.user
         order.cancel!
         put :cancel, params: {user_id: order.user.id, id: order.id }
       end
@@ -181,7 +181,7 @@ RSpec.describe OrdersController, type: :controller do
     context "when order does not exist" do
       let!(:order) {FactoryBot.create :order}
       before do
-        log_in order.user
+        sign_in order.user
         put :cancel, params: {user_id: order.user.id, id: 0 }
       end
       

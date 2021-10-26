@@ -1,0 +1,42 @@
+<% provide :title, t("log_in") %>
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name),
+        html: {class: "login100-form validate-form"}) do |f| %>
+        <span class="login100-form-title p-b-43">
+          <%= t "log_in" %>
+        </span>
+        <div class="wrap-input100 validate-input" data-validate =<%= t("users.register.email_req")%>>
+          <%= f.email_field :email, class: "input100", autocomplete: "email",
+            placeholder: t("users.register.email")%>
+          <span class="focus-input100"></span>
+        </div>
+        <div class="wrap-input100 validate-input" data-validate=<%= t("users.register.password_req")%>>
+          <%= f.password_field :password, class: "input100", autocomplete: "current-password",
+            placeholder: t("users.register.password")%>
+          <span class="focus-input100"></span>
+        </div>
+        <div class="flex-sb-m w-full p-t-3 p-b-32">
+          <div class="contact100-form-checkbox">
+            <% if devise_mapping.rememberable? %>
+              <div class="field">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="container-login100-form-btn">
+          <%= f.submit t("log_in"), class: "login100-form-btn" %>
+        </div>
+        <div class="text-center p-t-46 p-b-20">
+          <span class="txt2">
+            <%= render "devise/shared/links" %>
+          </span>
+        </div>
+      <% end %>
+      <div class="login100-more"></div>
+    </div>
+  </div>
+</div>

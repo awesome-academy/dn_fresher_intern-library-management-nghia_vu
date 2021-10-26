@@ -3,7 +3,7 @@ RSpec.shared_examples "login examples" do
   before{get :index, params: {user_id: order.user.id}}
 
   it "show flash message" do
-    expect(flash[:danger]).to eq I18n.t("please_login")
+    expect(flash[:alert]).to eq I18n.t("devise.failure.unauthenticated")
   end
 
   it "redirect to login_path" do
