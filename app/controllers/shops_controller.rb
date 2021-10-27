@@ -1,6 +1,7 @@
 class ShopsController < ApplicationController
   before_action :load_shop, only: :show
   before_action :check_user, only: %i(new create)
+  authorize_resource
 
   def index
     @shops = Shop.search_by_name(params[:search])

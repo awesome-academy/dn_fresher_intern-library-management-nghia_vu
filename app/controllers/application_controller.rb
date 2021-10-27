@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::Base
   before_action :set_locale, :load_cart, :load_info_receiver
+  rescue_from ActiveRecord::RecordNotFound,
+              with: :active_record_record_not_found
+  rescue_from CanCan::AccessDenied, with: :cancan_access_denied
 
   include SessionsHelper
   include OrdersHelper
@@ -33,5 +36,15 @@ class ApplicationController < ActionController::Base
 
   def load_info_receiver
     session[:info_receiver] ||= {}
+  end
+
+  def active_record_record_not_found
+    flash[:danger] = t "not_found_resource"
+    redirect_to root_url
+  end
+
+  def cancan_access_denied
+    flash[:danger] = t "shared.invalid_permision"
+    redirect_to root_url
   end
 end

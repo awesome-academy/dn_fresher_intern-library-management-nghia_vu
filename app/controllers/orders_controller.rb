@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :check_user
   before_action :load_order, only: %i(cancel show)
+  authorize_resource
 
   def new
     return unless load_book_id_in_cart.empty?

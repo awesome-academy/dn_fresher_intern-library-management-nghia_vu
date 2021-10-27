@@ -3,6 +3,7 @@ class Shop::BooksController < ApplicationController
   before_action :check_file, only: :import
   before_action :load_shop, only: %i(index show)
   before_action :load_book, only: :show
+  authorize_resource
 
   def index
     @books = @shop.all_books

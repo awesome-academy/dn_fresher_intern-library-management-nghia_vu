@@ -1,6 +1,7 @@
 en:
   app: "bucbuc"
   please_login: "Please login"
+  not_found_resource: "Couldn't find resource."
   nav:
     home: "Home"
     your_shop: "Your shop"

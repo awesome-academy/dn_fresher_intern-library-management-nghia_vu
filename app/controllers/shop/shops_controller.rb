@@ -1,6 +1,7 @@
 class Shop::ShopsController < ApplicationController
   before_action :authenticate_user!
   before_action :load_shop, :check_user, only: :show
+  authorize_resource
 
   def show
     @books = current_user.shop

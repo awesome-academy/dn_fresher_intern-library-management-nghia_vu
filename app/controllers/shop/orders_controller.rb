@@ -4,6 +4,7 @@ class Shop::OrdersController < ApplicationController
   before_action :load_order, only: %i(show approve disclaim)
   before_action :check_quantity, only: :approve
   before_action :check_user, only: %i(index show approve disclaim)
+  authorize_resource
 
   def index
     @orders = @shop.all_orders

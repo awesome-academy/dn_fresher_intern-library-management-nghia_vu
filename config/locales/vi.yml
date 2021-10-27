@@ -6,6 +6,7 @@ vi:
   forgot_password: "Quen mat khau"
   remember_me: "Luu thong tin"
   the_form_contains: "Contain Form"
+  not_found_resource: "Khong tim thay tai nguyen"
   users:
     already_account: "Da co account ?"
     login:
