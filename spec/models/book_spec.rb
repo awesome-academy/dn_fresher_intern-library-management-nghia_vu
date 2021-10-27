@@ -31,19 +31,6 @@ RSpec.describe Book, type: :model do
       end
     end
 
-    context ".search_by_title" do
-      context "when have keywork Lot" do
-        it "return book_2" do
-          expect Book.seach_by_title("Lot").should include book_2
-        end
-      end
-      context "when have not keywork" do
-        it "return all book" do
-          expect Book.seach_by_title("").should include book_3, book_2, book
-        end
-      end
-    end
-
     context ".by_book_ids" do
       context "when id = 2" do
         it "return book_2" do

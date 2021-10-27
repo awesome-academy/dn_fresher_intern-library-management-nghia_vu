@@ -4,8 +4,9 @@ class ShopsController < ApplicationController
   authorize_resource
 
   def index
-    @shops = Shop.search_by_name(params[:search])
-                 .page(params[:page]).per(Settings.length.digit_6)
+    @q = Shop.ransack(params[:q])
+    @shops = @q.result
+               .page(params[:page]).per(Settings.length.digit_6)
   end
 
   def new

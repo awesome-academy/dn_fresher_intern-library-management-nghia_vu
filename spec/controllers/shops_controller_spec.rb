@@ -7,7 +7,9 @@ RSpec.describe ShopsController, type: :controller do
     let!(:shop_2){FactoryBot.create :shop}
     context "when search value is nil" do
       before do
-        get :index, params: {search: ""}
+        get :index, params: { q: {
+          name_cont: ""
+        }}
       end
       it "render index" do
         expect(response).to render_template(:index)
@@ -22,7 +24,9 @@ RSpec.describe ShopsController, type: :controller do
 
     context "when search value is shop_2" do
       before do
-        get :index, params: {search: shop_2.name}
+        get :index, params: { q: {
+          name_cont: shop_2.name
+        }}
       end
       it "render index" do
         expect(response).to render_template(:index)

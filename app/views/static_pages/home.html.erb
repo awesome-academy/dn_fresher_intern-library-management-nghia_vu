@@ -3,10 +3,10 @@
   <h2 class="books-sale-title"><%= t "books.all_books" %></h2>
   <hr>
   <div class="books-sale-search">
-    <%= form_tag static_pages_home_path, method: "get" do %>
+    <%= search_form_for(@q, url: static_pages_home_path, method: :get) do |f| %>
       <div class="input-group">
-        <%= text_field_tag :search, "", class: "form-control" %>
-        <%= submit_tag t("books.search"), class: "btn btn-primary" %>
+        <%= f.search_field :title_cont, class: "form-control" %>
+        <%= f.submit t("books.search"), class: "btn btn-primary" %>
       </div>
     <% end %>
   </div>

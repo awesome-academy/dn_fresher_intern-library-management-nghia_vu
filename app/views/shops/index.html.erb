@@ -5,10 +5,10 @@
       <h2><%= t "shops.all_shops" %></h2>
     </div>
     <div class="col-md-6">
-    <%= form_tag shops_path, method: "get" do %>
+    <%= search_form_for(@q, url: shops_path, method: :get) do |f| %>
       <div class="input-group">
-        <%= text_field_tag :search, "", class: "form-control" %>
-        <%= submit_tag t("shared.search"), class: "btn btn-primary" %>
+        <%= f.search_field :name_cont, class: "form-control" %>
+        <%= f.submit t("books.search"), class: "btn btn-primary" %>
       </div>
     <% end %>
     </div>
