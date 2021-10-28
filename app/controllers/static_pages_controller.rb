@@ -1,4 +1,5 @@
 class StaticPagesController < ApplicationController
+  skip_authorize_resource
   def home
     @books = Book.recent_books
                  .seach_by_title(params[:search])
