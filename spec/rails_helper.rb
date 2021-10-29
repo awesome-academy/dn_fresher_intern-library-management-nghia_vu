@@ -20,6 +20,18 @@ RSpec.configure do |config|
 
   config.filter_rails_from_backtrace!
 
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+  
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+
   config.include Devise::Test::ControllerHelpers, type: :controller
 
   Shoulda::Matchers.configure do |config|

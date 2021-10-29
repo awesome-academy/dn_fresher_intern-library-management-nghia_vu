@@ -95,6 +95,12 @@ GEM
       deep_merge (~> 1.2, >= 1.2.1)
       dry-validation (~> 1.0, >= 1.0.0)
     crass (1.0.6)
+    database_cleaner (2.0.1)
+      database_cleaner-active_record (~> 2.0.0)
+    database_cleaner-active_record (2.0.1)
+      activerecord (>= 5.a)
+      database_cleaner-core (~> 2.0.0)
+    database_cleaner-core (2.0.1)
     deep_merge (1.2.1)
     devise (4.8.0)
       bcrypt (~> 3.0)
@@ -247,6 +253,10 @@ GEM
       thor (~> 1.0)
     rainbow (3.0.0)
     rake (13.0.6)
+    ransack (2.4.2)
+      activerecord (>= 5.2.4)
+      activesupport (>= 5.2.4)
+      i18n
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -369,6 +379,7 @@ DEPENDENCIES
   cancancan
   capybara (>= 3.26)
   config
+  database_cleaner
   devise
   factory_bot_rails
   faker (= 2.1.2)
@@ -386,6 +397,7 @@ DEPENDENCIES
   rails (~> 6.1.4, >= 6.1.4.1)
   rails-controller-testing
   rails-i18n
+  ransack
   rspec-rails (~> 4.0.1)
   rubocop (~> 0.74.0)
   rubocop-checkstyle_formatter

@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :load_order, only: %i(cancel show)
+  skip_authorize_resource only: :index
 
   def new
     return unless load_book_id_in_cart.empty?
