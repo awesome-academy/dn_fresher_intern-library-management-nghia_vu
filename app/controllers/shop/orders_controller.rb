@@ -19,6 +19,7 @@ class Shop::OrdersController < ApplicationController
       if @order.pending?
         update_quantity @order
         @order.success!
+        HardWorker.perform_async(@order.user.email, @order.user.name)
         flash[:success] = t "order.approve_success"
       else
         flash[:danger] = t "order.approve_failed"
