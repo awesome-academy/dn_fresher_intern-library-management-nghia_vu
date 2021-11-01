@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
   before_action :load_book, only: :create
-  skip_authorize_resource 
+  skip_authorize_resource
 
   def index
     @books = Book.by_book_ids(load_book_id_in_cart)
