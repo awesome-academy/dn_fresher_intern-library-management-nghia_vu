@@ -170,3 +170,5 @@ en:
     cancel: "badge-danger"
     success: "badge-success"
     disclaim: "badge-danger"
+  mail:
+    order_success: "Your order was successfully! Thank for choosing us."
